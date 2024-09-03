@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm0y40oxmc2c6"]
+
+[ext_resource type="Script" path="res://script/ejercicio0.gd" id="1_f1xn2"]
+[ext_resource type="FontFile" uid="uid://y608yfe04qsk" path="res://Minecraft.ttf" id="1_y5a8p"]
+[ext_resource type="Script" path="res://script/input_type.gd" id="2_5201h"]
+[ext_resource type="Script" path="res://script/input_type_int.gd" id="3_culwt"]
+[ext_resource type="Script" path="res://script/input_type_float.gd" id="4_rnf7d"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EditorDeLinea" type="LineEdit" parent="CenterContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y5a8p")
+script = ExtResource("1_f1xn2")
+
+[node name="STRING" type="Node" parent="CenterContainer/EditorDeLinea"]
+script = ExtResource("2_5201h")
+
+[node name="INT" type="Node" parent="CenterContainer/EditorDeLinea"]
+script = ExtResource("3_culwt")
+
+[node name="FLOAT" type="Node" parent="CenterContainer/EditorDeLinea"]
+script = ExtResource("4_rnf7d")
+
+[connection signal="text_submitted" from="CenterContainer/EditorDeLinea" to="CenterContainer/EditorDeLinea" method="_on_text_submitted"]
